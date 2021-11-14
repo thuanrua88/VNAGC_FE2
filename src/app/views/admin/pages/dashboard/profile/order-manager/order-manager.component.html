@@ -1,0 +1,50 @@
+<app-load [isLoading]="load"></app-load>
+<div class="card card-company-table">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>product</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Confirm time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listOrder; let ind = index" (click)="getOrderDetail(ind)"
+                        class="cursor-pointer">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="profile-img-container d-flex align-items-center avatar rounded">
+                                    <div class="profile-img">
+                                        <img [src]="user?.avatar ? 'data:image/png;base64,' + user?.avatar : 'assets/images/avatars/default-avatar.jpg'"
+                                            class="rounded img-fluid" alt="avatar" width="50px" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="fw-bolder">{{item?.user_detail?.fullName}}</div>
+                                    <div class="font-small-2 text-muted">{{item?.user_detail?.email}}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+
+                                <span>${{item.total}}</span>
+                            </div>
+                        </td>
+                        <td class="text-nowrap">
+                            <div class="d-flex flex-column">
+                                <span class="fw-bolder mb-25">{{item.status ? 'paid' : 'unpaid'}}</span>
+                            </div>
+                        </td>
+                        <td><span *ngIf="item.confirmation_date">
+                                {{item.confirmation_date | date:"yyyy/MM/dd"}}
+                            </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

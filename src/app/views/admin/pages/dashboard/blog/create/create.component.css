@@ -1,0 +1,36 @@
+.h2_title {
+    position: relative;
+}
+
+.h2_title_collapse {
+    cursor: pointer;
+}
+
+.box-metarial:hover .box-trash,
+.box-step:hover .box-trash,
+.box-content:hover .box-trash,
+.box-content:hover .box-trash:focus {
+    display: block;
+    position: absolute;
+    z-index: 10;
+
+    width: auto;
+    padding-right: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    background: white;
+    box-shadow: 0 3px 10px 0 rgb(34 41 47 / 10%);
+
+}
+.box-trash {
+    display: none;
+}
+
+/* .dropzone {
+    min-height: 150px;
+} */
+
+input {
+    border-radius: 0px !important;
+}

@@ -1,0 +1,95 @@
+<app-load [isLoading]="loading"></app-load>
+
+<div class=" ecommerce-application">
+    <div class="content-wrapper container-xxl p-0 list-view--product">
+        <div class="content-detached content-right">
+                <!-- users list start -->
+                <!-- users filter start -->
+                <div class="card">
+                    <div class="d-flex justify-content-between align-items-center pt-0">
+                        <h2 class="card-header w-auto">Blog List</h2>
+                        <div>
+                            <button type="button" class="btn btn-outline-primary waves-effect me-2" (click)="routerCreateBlog()">
+                                <span>Create blog</span>
+                            </button>
+                            <button mat-raised-button [matMenuTriggerFor]="menu" class="me-2">Display type</button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="reset()">Get All</button>
+                                <button mat-menu-item (click)="getOrderBlogByMonth(1)">Select date</button>
+                                <button mat-menu-item (click)="getOrderBlogByMonth(2)">2st quarter</button>
+                                <button mat-menu-item (click)="getOrderBlogByMonth(3)">3st quarter</button>
+                                <button mat-menu-item (click)="getOrderBlogByMonth(4)">4st quarter</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                </div>
+                <!-- users filter end -->
+                <!-- list section start -->
+                <div class="card">
+                    <!-- </div> -->
+                    <div class="card-datatable table-responsive pt-0">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>View</th>
+                                    <th>Options</th>
+                                    <th class="text-center">Status</th>
+                                </tr>
+                                <tr *ngFor="let i of listBlog; let id = index">
+                                    <td>{{i.summary}}</td>
+                                    <td>{{i.category_name}}</td>
+                                    <td>{{i.view}}</td>
+                                    <td>
+                                        <div class=" d-flex align-items-center">
+                                            <div class="nav-item">
+                                                <a class="nav-link" [routerLink]="['/blog/blog-detail/', {id: i.id}]">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-eye ficon list-status" style="margin-right: 10px;">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z">
+                                                        </path>
+                                                        <circle cx="12" cy="12" r="3"></circle>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="nav-item">
+                                                <a class="nav-link" [routerLink]="['/blog/update/', {id: i.id}]">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" style="margin-right: 10px;" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2">
+                                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="nav-item">
+                                                <a class="nav-link" href="javascript:void(0)"  (click)="deleteProduct(i.id, id)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-trash-2 ficon list-status">
+                                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                        </path>
+                                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-check-primary form-switch">
+                                            <mat-slide-toggle (change)="activeBlog(i, $event)" [checked]="i.status == 0 ? false : true"></mat-slide-toggle>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <!-- list section end -->
+                <!-- users list ends -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<app-load [isLoading]="load"></app-load>
+
+<div
+    class="archive bg-white post-type-archive post-type-archive-product theme-cookandmeal woocommerce-shop woocommerce woocommerce-page woocommerce-no-js blog-post-transparent-header-disable blog-slider-disable blog-enable-dropcaps blog-enable-images-animations blog-enable-sticky-sidebar blog-enable-sticky-header blog-style-corners-rounded blog-home-block-title-center blog-home-block-title-style-sideborders blog-home-block-subtitle-style-regular blog-post-details-align-left">
+    <div class="content-block">
+        <div class="container-fluid container-page-item-title">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-item-title-archive page-item-title-single">
+                        <nav class="woocommerce-breadcrumb"><a
+                                href="https://wp.wp-preview.com/cookandmeal/cookandmeal-6">Home</a>&nbsp;&#47;&nbsp;Shop
+                        </nav>
+                        <h1>Shop</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-container container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="woocommerce-notices-wrapper"></div>
+                    <p class="woocommerce-result-count">
+                        Showing all {{this.listProduct.length}} results</p>
+                    <form class="woocommerce-ordering" method="get">
+                        <select name="orderby" class="orderby" aria-label="Shop order">
+                            <option value="menu_order" selected='selected'>Default sorting</option>
+                            <option value="popularity">Sort by popularity</option>
+                            <option value="rating">Sort by average rating</option>
+                            <option value="date">Sort by latest</option>
+                            <option value="price">Sort by price: low to high</option>
+                            <option value="price-desc">Sort by price: high to low</option>
+                        </select>
+                        <input type="hidden" name="paged" value="1" />
+                    </form>
+
+                    <ul class="products row row-cols-sm-4 d-flex">
+                        <!-- <li
+                            class="product type-product post-18 status-publish first instock product_cat-music has-post-thumbnail downloadable virtual purchasable product-type-simple">
+                            <a href="../product/album/index.html"
+                                class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300"
+                                    height="300" src="../wp-content/uploads/2019/01/shop-3-300x300.jpg"
+                                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt=""
+                                    loading="lazy"
+                                    srcset="https://wp.wp-preview.com/cookandmeal/cookandmeal-6/wp-content/uploads/2019/01/shop-3-300x300.jpg 300w, https://wp.wp-preview.com/cookandmeal/cookandmeal-6/wp-content/uploads/2019/01/shop-3-150x150.jpg 150w, https://wp.wp-preview.com/cookandmeal/cookandmeal-6/wp-content/uploads/2019/01/shop-3-768x768.jpg 768w, https://wp.wp-preview.com/cookandmeal/cookandmeal-6/wp-content/uploads/2019/01/shop-3-360x360.jpg 360w, https://wp.wp-preview.com/cookandmeal/cookandmeal-6/wp-content/uploads/2019/01/shop-3-600x600.jpg 600w, https://wp.wp-preview.com/cookandmeal/cookandmeal-6/wp-content/uploads/2019/01/shop-3.jpg 800w"
+                                    sizes="(max-width: 300px) 100vw, 300px" />
+                                <h2 class="woocommerce-loop-product__title">Album</h2>
+                                <span class="price"><span class="woocommerce-Price-amount amount"><bdi><span
+                                                class="woocommerce-Price-currencySymbol">&#36;</span>15.00</bdi></span></span>
+                            </a><a href="index6694.html?add-to-cart=18" data-quantity="1"
+                                class="button product_type_simple add_to_cart_button ajax_add_to_cart"
+                                data-product_id="18" data-product_sku="545"
+                                aria-label="Add &ldquo;Album&rdquo; to your cart" rel="nofollow">Add
+                                to cart</a>
+                        </li> -->
+                        <li *ngFor="let item of listProduct; let i = index"
+                            class="col-lg-4 m-8 my-3 product type-product post-891 status-publish instock product_cat-accessories has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+                            <a [routerLink]="['/product-detail', {id: item.id}]"
+                                class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                <span class="onsale" *ngIf="item.sale > 0">Sale!</span>
+                                <div class="card ecommerce-card">
+                                    <div class="item-img text-center">
+                                        <a [routerLink]="['/product-detail', {id: item.id}]">
+                                            <img class="img-fluid card-img-top" [src]="item.banner_img ? item.banner_img : item.cover_img" alt="banner" />
+                                            <img class="img-fluid card-img-top" [src]="item.cover_img ? item.cover_img : item.banner_img" alt="banner" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <h2 class="woocommerce-loop-product__title">{{item.name}}</h2>
+                                <span class="price">
+                                    <ins class="mr-3">
+                                        <span class="woocommerce-Price-amount amount"><bdi><span
+                                                    class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                <ng-container *ngIf="item.sale > 0">
+                                                    {{(item.price * ((100 - item.sale)/100)) | number:'1.0-0'}}
+                                                </ng-container>
+                                                <ng-container *ngIf="item.sale == 0">
+                                                    {{item.price}}
+                                                </ng-container>
+                                            </bdi>
+                                        </span>
+                                    </ins>
+                                    <del aria-hidden="true" *ngIf="item.sale > 0">
+                                        <span class="woocommerce-Price-amount amount">
+                                            <bdi>
+                                                <span class="woocommerce-Price-currencySymbol">&#36;
+                                                </span>{{item.sale + "%"}}
+                                            </bdi>
+                                        </span>
+                                    </del>
+                                </span>
+                            </a><button type="submit" name="add-to-cart" value="891" class="button product_type_simple add_to_cart_button ajax_add_to_cart"
+                                (click)="addtoCart(item)">Add to
+                                cart</button>
+                        </li>
+                    </ul>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,194 @@
+<app-load [isLoading]="load"></app-load>
+
+<div class="row">
+    <!-- left profile info section -->
+    <!-- <div class="col-lg-3 col-12 order-2 order-lg-1">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="mb-75">About</h5>
+                            <p class="card-text">
+                                Tart I love sugar plum I love oat cake. Sweet ⭐️ roll caramels I love jujubes. Topping
+                                cake wafer.
+                            </p>
+                            <div class="mt-2">
+                                <h5 class="mb-75">Joined:</h5>
+                                <p class="card-text">November 15, 2015</p>
+                            </div>
+                            <div class="mt-2">
+                                <h5 class="mb-75">Lives:</h5>
+                                <p class="card-text">New York, USA</p>
+                            </div>
+                            <div class="mt-2">
+                                <h5 class="mb-75">Email:</h5>
+                                <p class="card-text">bucketful@fiendhead.org</p>
+                            </div>
+                            <div class="mt-2">
+                                <h5 class="mb-50">Website:</h5>
+                                <p class="card-text mb-0">www.pixinvent.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+    <!--/ left profile info section -->
+
+    <!-- center profile info section -->
+    <div class="col-lg-12 col-12 order-1 order-lg-2">
+        <!-- post 1 -->
+        <div class="card" *ngFor="let item of listBlog">
+            <div class="card-body">
+                <div class="d-flex justify-content-start align-items-center mb-1">
+                    <!-- avatar -->
+                    <div class="avatar me-1">
+                        <img [src]="item.author.avatar ? 'data:image/png;base64,' + item.author.avatar : 'assets/images/avatars/default-avatar.jpg'"
+                        [routerLink]="['/page-profile', {id: userId}]"
+                            alt="avatar img" height="50" width="50">
+                    </div>
+                    <!--/ avatar -->
+                    <div class="profile-user-info" [routerLink]="['/page-profile', {id: userId}]">
+                        <h6 class="mb-0">{{item.author.fullName}}</h6>
+                        <small class="text-muted">Create {{item.create_at | date:"yyyy-MM-dd"}} at {{item.create_at | date:"HH:mm"}}</small>
+                    </div>
+                </div>
+                <p class="card-text">
+                    {{item.summary}} </p>
+                <!-- post img -->
+                <div class="ecommerce-card">
+                    <div class="item-img">
+                        <a [routerLink]="['/blog/blog-detail', {id: item.id}]">
+                            <img class="img-fluid card-img-top rounded mb-75" [src]="'data:image/png;base64,' + item.banner_img" alt="avatar img">
+
+                        </a>
+                    </div>
+                </div>
+                <!--/ post img -->
+
+                <!-- like share -->
+                <div class="row d-flex justify-content-start align-items-center flex-wrap pb-50">
+                    <div class="col-sm-6 d-flex justify-content-between justify-content-sm-start mb-2">
+                        <a href="javascript:void(0)" class="d-flex align-items-center text-muted text-nowrap">
+                            <svg _ngcontent-atk-c173="" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye">
+                                <path _ngcontent-atk-c173=""
+                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                </path>
+                                <path _ngcontent-atk-c173=""
+                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                </path>
+                            </svg>
+                            <span>{{item.view}}</span>
+                        </a>
+
+                    </div>
+
+                    <!-- share and like count and icons -->
+                    <!-- <div
+                                    class="col-sm-6 d-flex justify-content-between justify-content-sm-end align-items-center mb-2">
+                                    <a href="javascript:void(0)" class="text-nowrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-message-square text-body font-medium-3 me-50">
+                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+                                            </path>
+                                        </svg>
+                                        <span class="text-muted me-1">1.25k</span>
+                                    </a>
+
+                                    <a href="javascript:void(0)" class="text-nowrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-share-2 text-body font-medium-3 mx-50">
+                                            <circle cx="18" cy="5" r="3"></circle>
+                                            <circle cx="6" cy="12" r="3"></circle>
+                                            <circle cx="18" cy="19" r="3"></circle>
+                                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                        </svg>
+                                        <span class="text-muted">1.25k</span>
+                                    </a>
+                                </div> -->
+                    <!-- share and like count and icons -->
+                </div>
+                <!-- like share -->
+            </div>
+        </div>
+        <!--/ post 1 -->
+    </div>
+    <!--/ center profile info section -->
+
+    <!-- right profile info section -->
+    <!--<div class="col-lg-3 col-12 order-3">
+         <div class="card">
+            <div class="card-body">
+                <h5 class="mb-0">Latest Photos</h5>
+                <div class="row">
+                    <div class="col-md-4 col-6 profile-latest-img">
+                        <a href="javascript:void(0)">
+                            <img src="../../../app-assets/images/profile/user-uploads/user-13.jpg"
+                                class="img-fluid rounded" alt="avatar img">
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-6 profile-latest-img">
+                        <a href="javascript:void(0)">
+                            <img src="../../../app-assets/images/profile/user-uploads/user-02.jpg"
+                                class="img-fluid rounded" alt="avatar img">
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-6 profile-latest-img">
+                        <a href="javascript:void(0)">
+                            <img src="../../../app-assets/images/profile/user-uploads/user-03.jpg"
+                                class="img-fluid rounded" alt="avatar img">
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-6 profile-latest-img">
+                        <a href="javascript:void(0)">
+                            <img src="../../../app-assets/images/profile/user-uploads/user-04.jpg"
+                                class="img-fluid rounded" alt="avatar img">
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-6 profile-latest-img">
+                        <a href="javascript:void(0)">
+                            <img src="../../../app-assets/images/profile/user-uploads/user-05.jpg"
+                                class="img-fluid rounded" alt="avatar img">
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-6 profile-latest-img">
+                        <a href="javascript:void(0)">
+                            <img src="../../../app-assets/images/profile/user-uploads/user-06.jpg"
+                                class="img-fluid rounded" alt="avatar img">
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-6 profile-latest-img">
+                        <a href="javascript:void(0)">
+                            <img src="../../../app-assets/images/profile/user-uploads/user-07.jpg"
+                                class="img-fluid rounded" alt="avatar img">
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-6 profile-latest-img">
+                        <a href="javascript:void(0)">
+                            <img src="../../../app-assets/images/profile/user-uploads/user-08.jpg"
+                                class="img-fluid rounded" alt="avatar img">
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-6 profile-latest-img">
+                        <a href="javascript:void(0)">
+                            <img src="../../../app-assets/images/profile/user-uploads/user-09.jpg"
+                                class="img-fluid rounded" alt="avatar img">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!--/ right profile info section -->
+</div>
+
+<!-- reload button -->
+<!-- <div class="row">
+                <div class="col-12 text-center">
+                    <button type="button"
+                        class="btn btn-sm btn-primary block-element border-0 mb-1 waves-effect waves-float waves-light">Load
+                        More</button>
+                </div>
+            </div> -->

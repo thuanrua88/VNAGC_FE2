@@ -1,0 +1,108 @@
+<div class="page-container container span-col-md-8">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="entry-content clearfix" role="main">
+                <article>
+                    <div class="woocommerce">
+                        <form class="woocommerce-cart-form" *ngIf="listCart.length!=0">
+
+                            <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                                <thead>
+                                    <tr class="woocommerce-cart-form__contents-product">
+                                        <th class="product-remove">Product</th>
+                                        <th class="product-name">Description</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-subtotal">Subtotal</th>
+                                        <th class="product-thumbnail">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="woocommerce-cart-form__cart-item cart_item"
+                                        *ngFor="let item of listCart; let i = index">
+
+
+                                        <td class="product-thumbnail">
+                                            <a [routerLink]="['product-detail', {id: item.id}]"><img width="300"
+                                                    height="300"
+                                                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                                                    alt="avatar" loading="lazy" [src]="item.banner_img"></a>
+                                        </td>
+
+                                        <td class="product-name" data-title="Product">
+                                            <a [routerLink]="['product-detail', {id: item.id}]"
+                                                style="text-decoration: none">
+                                                {{item.name}}
+                                            </a>
+                                        </td>
+
+                                        <td class="product-price" data-title="Price">
+                                            <span class="woocommerce-Price-amount amount">
+                                                <del style="margin-right: 15px">{{'$' + item.sale}}</del>
+                                                <bdi class="mr-3">
+                                                    <span class="woocommerce-Price-currencySymbol">$
+                                                    </span>{{item.price}}
+                                                </bdi>
+                                            </span>
+                                        </td>
+
+                                        <td class="product-quantity" data-title="Quantity">
+                                            <div class="quantity d-flex" style="justify-content:center">
+                                                <button class="product-quantity-btn"><svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="shopee-svg-icon "><polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5"></polygon></svg></button>
+                                                <input type="number" id="quantity_614d1b52aacfa"
+                                                style="padding: 0; border-radius: 0;"
+                                                    class="input-text qty text" step="1" min="0" max="" 
+                                                    #quantity_i
+                                                    onkeyup="this.value = Math.abs(this.value)"
+                                                    (keyup)="setQuantity(i, quantity_i.value)" [value]="item.quantity"
+                                                    title="Qty" size="4" placeholder="" inputmode="numeric">
+                                                <button class="product-quantity-btn"><svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="shopee-svg-icon icon-plus-sign"><polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5"></polygon></svg></button>
+                                            </div>
+                                        </td>
+
+                                        <td class="product-subtotal" data-title="Subtotal">
+                                            <span class="woocommerce-Price-amount amount"><bdi><span
+                                                        class="woocommerce-Price-currencySymbol">$</span>{{item.subtotal
+                                                    | number:"1.0-0"}}</bdi></span>
+                                        </td>
+                                        <td class="product-remove" style="padding:0; width:100px">
+                                            <button (click)="deleteCartByIdProduct(item.id, i)"
+                                                class="btn remove">×</button>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+
+
+                        <div class="cart-collaterals">
+                            <div class=" cart_totals-pay">
+                                <div style="padding-right: 10px; font-size:24px; margin: 15px 0; font-weight:600; color: #e57534">Totals: </div>
+                                <div class="woocommerce-Price-amount amount">
+                                    <bdi style="font-size:24px;font-weight:600; color:#e57534">
+                                        <span class="woocommerce-Price-currencySymbol"
+                                            style="font-size:24px;font-weight:600; color: #e57534">
+                                            $
+                                        </span>
+                                        {{total()|number:"1.0-0"}}
+                                    </bdi>
+                                </div>
+
+                                <!-- <div class="wc-proceed-to-checkout">
+
+                                    <a routerLink="/checkout" class="checkout-button button alt wc-forward">
+                                        Proceed to checkout</a>
+                                </div> -->
+                            </div>
+                            <div style="text-align:right">
+                                <a class="btn btn-lg btn-radius" href="#">Keep shopping</a>
+                                <a class="btn btn-lg btn-radius" href="#" style="margin-left: 10px">Pay</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>

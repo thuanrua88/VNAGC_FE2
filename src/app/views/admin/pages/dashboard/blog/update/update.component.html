@@ -1,0 +1,529 @@
+<app-load [isLoading]="loading"></app-load>
+<div class="content-wrapper container-xxl p-0 admin">
+    <div class="content-header row">
+    </div>
+    <div class="content-body">
+        <!-- users edit start -->
+        <section class="app-product-edit">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-pills" role="tablist">
+                        <h2 class="pl-0">Update Blog</h2>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- Product Tab starts -->
+                        <div class="tab-pane active" id="product" aria-labelledby="product-tab" role="tabpanel">
+                            <form class="form-validate" [formGroup]="formBlog">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-50">
+                                            <label class="form-label" for="blogName">Food Name</label>
+                                            <input type="text" class="form-control" 
+                                            [ngClass]="isInvalid('name') ? 'error' : ''"
+                                            placeholder="Blog Name"
+                                                formControlName="name" id="blogName" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-50">
+                                            <label class="form-label">Category</label>
+                                            <mat-form-field appearance="fill" class="w-100">
+                                                <mat-label>Select</mat-label>
+                                                <mat-select formControlName="category">
+                                                    <mat-option *ngFor="let i of listCategory" [value]="i.id">{{i.name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label">Hashtag</label>
+                                        <mat-form-field appearance="fill" class="w-100">
+                                            <mat-label>Select</mat-label>
+                                            <mat-select placeholder="hashtags" name="hashtag" class="filter-select"
+                                                [(ngModel)]="selectedHastags" [compareWith]="equals" multiple
+                                                formControlName="hashTag" #hashtagSelect>
+                                                <mat-option *ngFor="let hashtag of hastags" [value]="hashtag.id">
+                                                    {{hashtag.name}}
+                                                </mat-option>
+                                                <mat-option disabled="disabled" class="filter-option">
+                                                    <button mat-button class="mat-primary fill text-sm"
+                                                        (click)="selectAll(hashtagSelect, hastags, selectedHastags)">Select
+                                                        All
+                                                    </button>
+                                                    <button mat-button class="mat-accent fill text-sm"
+                                                        (click)="deselectAll(hashtagSelect)">
+                                                        Deselect All
+                                                    </button>
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="mb-50 row mx-0">
+                                        <!-- <div class="col-md-6 ps-0">
+                                            <label class="form-label" for="summary">Summary</label>
+                                            <textarea type="text" rows="3" class="form-control" [ngClass]="isInvalid('name') ? 'error' : ''"
+                                                formControlName="summary" id="summary"></textarea>
+                                        </div> -->
+                                        <div class="col-md-6 d-flex p-0">
+                                            <div class="col-sm-12 align-self-end ps-0">
+                                                <div action="#" class="dropzone dropzone-area dz-clickable" id="dpz-single-file"
+                                                    [ngClass]="avatar == '' ? 'error' : ''">
+                                                    <label class="dz-message" for="avatar">Avatar</label>
+                                                    <input type="file" hidden id="avatar" accept="image/*" (change)="updateFile($event, 1)">
+                                                    <img [src]="'data:image/png;base64,' + avatar" alt="avatar" *ngIf="avatar" class="img-avatar">
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-sm-6 align-self-end">
+                                                                                    <div action="#" class="dropzone dropzone-area dz-clickable"
+                                                                                        id="dpz-single-file-coverr">
+                                                                                        <label class="dz-message" for="avatar_cover">Avatar
+                                                                                            cover</label>
+                                                                                        <input type="file" hidden id="avatar_cover" accept="image/*"
+                                                                                            (change)="updateFile($event, 0)">
+                                                                                        <img [src]="avatar_cover" alt="avatar cover" *ngIf="avatar_cover"
+                                                                                            class="img-avatar">
+                                                                                    </div>
+                                                                                </div> -->
+                                        </div>
+                                        <div class="col-md-6 px-0">
+                                            <label class="form-label ms-1" for="cooking_time">
+                                                cooking time
+                                            </label>
+                                            <div class="row mx-0">
+                                                <div class="col-12">
+                                                    <input type="text" class="form-control" formControlName="cooking_time" id="cooking_time" />
+                                                </div>
+                                             
+                                                <div class="col-md-12 pe-0">
+                                                    <label class="form-label" for="url_youtube">url
+                                                        youtube
+                                                        <span>
+                                                            <a href="https://www.youtube.com/" target="_blank">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                    class="feather feather-link-2">
+                                                                    <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3">
+                                                                    </path>
+                                                                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                                                                </svg>
+                                                            </a>
+                                                        </span>
+                                                    </label>
+                                                    <div class="row mx-0">
+                                                        <input type="text" class="form-control" placeholder="url youtube" formControlName="url_video_youtube"
+                                                            id="url_youtube" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row mb-50">
+                                        <div class="col-md-6 pe-0" hiddden>
+                                            <label class="form-label" for="url_youtube">url
+                                                youtube
+                                                <span>
+                                                    <a href="https://www.youtube.com/" target="_blank">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" class="feather feather-link-2">
+                                                            <path
+                                                                d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3">
+                                                            </path>
+                                                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                                                        </svg>
+                                                    </a>
+                                                </span>
+                                            </label>
+                                            <div class="row mx-0">
+                                                <input type="text" class="form-control" placeholder="url youtube"
+                                                    formControlName="url_video_youtube" id="url_youtube" />
+                                            </div>
+                                        </div>
+                                       
+                                    </div> -->
+                                    <div class="col-md-12">
+                                        <div class="mb-50">
+                                            <label class="form-label" for="des">Step</label>
+                                            <textarea type="text" rows="3" class="form-control" [ngClass]="isInvalid('step') ? 'error' : ''"
+                                                formControlName="step" id="des"></textarea>
+                                        </div>
+                                    </div>
+                                    <!-- Metarial -->
+                                    <fieldset>
+                                        <legend class="h2_title_collapse" [attr.aria-expanded]="!isCollapsed.metarial" aria-controls="collapseExample">
+                                            Metarial
+                                    
+                                        </legend>
+                                        <ul class="row list-style-none cookandmeal-post-list scrollbar-y" style="padding-left: 0">
+                                            <li class="col-2 cookandmeal-post cookandmeal-post-item" *ngFor="let item of listMetarialShop">
+                                                <div class="post-categories post-categories-product cursor-pointer" (click)="pushMetarial(item)">
+                                                    <img style="vertical-align:middle;" aria-hidden src="{{item.banner_img}}" height="50" />
+                                                    <span class="post-categories-name clamp-1">{{ item.name ? item.name : item.productName }}</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <input type="text" class="create-input form-control" placeholder="Enter your metarial" [formControl]="myControl"
+                                            (keyup)="searchMetarial(myControl.value)">
+                                        <ul class="row list-style-none cookandmeal-post-list scrollbar-y" style="padding-left: 0">
+                                            <li class="col-2 cookandmeal-post cookandmeal-post-item" *ngFor="let item of listProduct">
+                                                <div class="post-categories post-categories-product cursor-pointer" (click)="pushMetarial(item)">
+                                                    <img style="vertical-align:middle;" aria-hidden src="{{item.banner_img}}" height="50" />
+                                                    <span class="post-categories-name clamp-1">{{ item.name }}</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </fieldset>
+                                    <div class="col-md-12">
+                                        <div class="mb-50">
+                                            <label class="form-label" for="des1">Description</label>
+                                            <textarea type="text" rows="3" class="form-control" [ngClass]="isInvalid('name') ? 'error' : ''"
+                                                formControlName="description" id="des1"></textarea>
+                                        </div>
+                                    </div>
+                                    <!-- <fieldset>
+                                        <legend (click)="metarialC.toggle()" class="h2_title_collapse"
+                                            [attr.aria-expanded]="!isCollapsed.metarial"
+                                            aria-controls="collapseExample">Metarial
+                                            <span *ngIf="!isCollapsed.metarial; else isCollaps">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-chevron-down">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </span>
+                                            <ng-template #isCollaps>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-chevron-right">
+                                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                                    </svg>
+                                                </span>
+                                            </ng-template>
+                                        </legend>
+                                        <div #metarialC="ngbCollapse" [(ngbCollapse)]="isCollapsed.metarial">
+                                            <ng-container formArrayName="metarial">
+                                                <div class="col-12 p-0 box-metarial"
+                                                    *ngFor="let item of listMetarial(); let i = index"
+                                                    [formGroupName]="i">
+                                                    <div class="row m-0 pt-1">
+                                                        <div class="col-md-6">
+                                                            <div class="">
+                                                                <label class="form-label"
+                                                                    [for]="'metarial_name'+i">Name</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="milk" formControlName="name"
+                                                                    [id]="'metarial_name'+i" />
+                                                                <p class="error" *ngIf="item.value.name==''">Field is
+                                                                    required</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 d-flex position-relative">
+                                                            <div class="col-6 px-2">
+                                                                <label class="form-label"
+                                                                    [for]="'metarial_mass'+i">Mass</label>
+                                                                <input type="number" class="form-control"
+                                                                    oninput="Math.abs(this.value) > 0 ? this.value=Math.abs(this.value) : this.value=1"
+                                                                    placeholder="50g" formControlName="content"
+                                                                    [id]="'metarial_mass'+i" />
+                                                            </div>
+                                                            <div class="col-6 px-2">
+                                                                <label class="form-label">unit</label>
+                                                                <mat-form-field appearance="fill" class="w-100">
+                                                                    <mat-label>Select</mat-label>
+                                                                    <mat-select formControlName="unit">
+                                                                        <mat-option *ngFor="let i of listUnit"
+                                                                            [value]="i">
+                                                                            {{i}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                                <p class="error" *ngIf="item.value.unit==''">Field is
+                                                                    required</p>
+                                                            </div>
+                                                            <div class="box-trash">
+                                                                <button class="btn btn-trash"
+                                                                    (click)="removeMetarial(i)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-trash-2">
+                                                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                                                        <path
+                                                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                                        </path>
+                                                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                                    </svg>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-50">
+                                                    <button mat-stroked-button (click)="addMetarial()">
+                                                        Add new metarial <sup>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-plus">
+                                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            </svg>
+                                                        </sup>
+                                                    </button>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </fieldset> -->
+
+                                    <!-- Step by Step -->
+                                    <!-- <fieldset>
+                                        <legend (click)="stepC.toggle()" [attr.aria-expanded]="!isCollapsed.step"
+                                            class="h2_title_collapse" aria-controls="collapseExample">
+                                            Step
+                                            <span *ngIf="!isCollapsed.step; else isCollaps">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-chevron-down">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </span>
+                                            <ng-template #isCollaps>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-chevron-right">
+                                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                                    </svg>
+                                                </span>
+                                            </ng-template>
+                                        </legend>
+                                        <div #stepC="ngbCollapse" [(ngbCollapse)]="isCollapsed.step">
+                                            <ng-container formArrayName="step">
+                                                <div class="col-md-12 box-step position-relative p-0"
+                                                    *ngFor="let item of listStep(); let i = index" [formGroupName]="i">
+                                                    <div class="mb-50 col-md-12">
+                                                        <label class="form-label" [for]="'step_name'+i">name</label>
+                                                        <input type="text" class="form-control" placeholder="Step1"
+                                                            [id]="'step_name'+i" formControlName="name" />
+                                                        <p class="error" *ngIf="item.value.name==''">Field is
+                                                            required</p>
+                                                    </div>
+                                                    <div class="mb-50 row mx-0 col-md-12">
+                                                        <div class="col-md-6 p-0">
+                                                            <label class="form-label"
+                                                                [for]="'step_des'+i">description</label>
+                                                            <textarea type="text" rows="3" class="form-control"
+                                                                name="description" [id]="'step_des'+i"
+                                                                formControlName="description"></textarea>
+                                                            <p class="error" *ngIf="item.value.description==''">Field is
+                                                                required</p>
+                                                        </div>
+                                                        <div class="col-md-6 p-0">
+                                                            <label class="form-label"
+                                                                [for]="'step_name'+i">Banner</label>
+                                                            <div class="col-sm-12 mb-50 pe-0">
+                                                                <div action="#"
+                                                                    class="dropzone dropzone-area dz-clickable"
+                                                                    id="dpz-single-file">
+                                                                    <label class="dz-message notBefore"
+                                                                        [for]="'step_avatar'+i">Select
+                                                                        banner</label>
+                                                                    <input type="file" hidden [id]="'step_avatar'+i" accept="image/*"
+                                                                        (change)="updateListFile($event, i, 1)">
+                                                                    <img [src]="item.value.avatar" alt="avatar"
+                                                                        *ngIf="item.value.avatar" class="img-avatar">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-trash" style="align-items: center;">
+                                                        <button class="btn btn-trash" (click)="removeStep(i)">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-trash-2">
+                                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                                <path
+                                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                                </path>
+                                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-50">
+                                                    <button mat-stroked-button (click)="addStep()">
+                                                        Add new step <sup>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-plus">
+                                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            </svg>
+                                                        </sup>
+                                                    </button>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </fieldset> -->
+
+                                    <!-- Content orther -->
+                                    <!-- <fieldset>
+                                        <legend (click)="contentC.toggle()" [attr.aria-expanded]="!isCollapsed.content"
+                                            class="h2_title_collapse" aria-controls="collapseExample">Content orther
+                                            <span *ngIf="!isCollapsed.content; else isCollaps">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-chevron-down">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </span>
+                                            <ng-template #isCollaps>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-chevron-right">
+                                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                                    </svg>
+                                                </span>
+                                            </ng-template>
+                                        </legend>
+                                        <div #contentC="ngbCollapse" [(ngbCollapse)]="isCollapsed.content">
+                                            <ng-container formArrayName="content">
+                                                <div class="col-md-12 box-content position-relative"
+                                                    *ngFor="let item of listContent(); let i = index"
+                                                    [formGroupName]="i">
+
+                                                    <div class="mb-50">
+                                                        <label class="form-label" [for]="'content_title'+i">name</label>
+                                                        <input type="text" class="form-control" placeholder="Ration"
+                                                            name="ration" [id]="'content_title'+i"
+                                                            formControlName="title" />
+                                                        <p class="error" *ngIf="item.value.title==''">Field is
+                                                            required</p>
+                                                    </div>
+                                                    <div class="mb-50">
+                                                        <label class="form-label"
+                                                            [for]="'content_des'+i">description</label>
+                                                        <textarea type="text" rows="3" class="form-control"
+                                                            name="description" [id]="'content_des'+i"
+                                                            formControlName="description"></textarea>
+                                                    </div>
+                                                    <div class="mb-50">
+                                                        <label class="form-label"
+                                                            [for]="'content_title'+i">Banner</label>
+                                                        <div class="d-flex justify-content-around">
+                                                            <div class="col-sm-6 ps-0">
+                                                                <div action="#"
+                                                                    class="dropzone dropzone-area dz-clickable mb-50"
+                                                                    id="dpz-single-file">
+                                                                    <label class="dz-message" [for]="'content_avatar'+i"
+                                                                        for="avatar">Avatar</label>
+                                                                    <input type="file" hidden [id]="'content_avatar'+i" accept="image/*"
+                                                                        (change)="updateListFile($event, i, 0, 0)">
+                                                                    <img [src]="item.value.avatar" alt="avatar"
+                                                                        *ngIf="item.value.avatar" class="img-avatar">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 pe-0">
+                                                                <div action="#"
+                                                                    class="dropzone dropzone-area dz-clickable mb-50"
+                                                                    id="dpz-single-file">
+                                                                    <label class="dz-message"
+                                                                        [for]="'content_avatar_cover'+i">Avatar
+                                                                        cover</label>
+                                                                    <input type="file" hidden accept="image/*"
+                                                                        [id]="'content_avatar_cover'+i"
+                                                                        (change)="updateListFile($event, i, 0, 1)">
+                                                                    <img [src]="item.value.avatar_cover"
+                                                                        alt="avatar cover"
+                                                                        *ngIf="item.value.avatar_cover"
+                                                                        class="img-avatar">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-trash" style="align-items: center;">
+                                                        <button class="btn btn-trash" (click)="removeContent(i)">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-trash-2">
+                                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                                <path
+                                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                                </path>
+                                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-50">
+                                                    <button mat-stroked-button (click)="addContent()">
+                                                        Add new content <sup>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-plus">
+                                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            </svg>
+                                                        </sup>
+                                                    </button>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+
+                                    </fieldset> -->
+
+                                  
+
+                                    <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+                                        <button type="submit"
+                                            class="btn btn-primary mb-50 mb-sm-0 me-0 me-sm-1 waves-effect waves-float waves-light"
+                                            (click)="createBlog();">Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- users edit account form ends -->
+                        </div>
+                        <!-- Product Tab ends -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: Content-->
+    </div>
+</div>
+
+<!-- BEGIN: Customizer-->
+<div class="customizer d-none d-md-block"><a class="customizer-toggle d-flex align-items-center justify-content-center"
+        href="javascript:void(0)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-eye">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+        </svg></a>
+</div>
+<!-- End: Customizer-->

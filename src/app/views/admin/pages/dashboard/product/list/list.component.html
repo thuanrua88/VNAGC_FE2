@@ -1,0 +1,117 @@
+<!-- BEGIN: Content-->
+<app-load [isLoading]="load"></app-load>
+<div class="app-content content ecommerce-application">
+  <div class="content-wrapper container-xxl p-0 list-view--product">
+    <div  class="card">
+      <div  class="d-flex justify-content-between align-items-center pt-0">
+        <h2  class="card-header w-auto">Product List</h2>
+        <a routerLink="/product/create" type="button" class="btn btn-outline-primary me-1">
+          New Product
+        </a>
+      </div>
+    </div>
+    <div class="content-detached content-right">
+      <div class="content-body ms-0">
+        <!-- E-commerce Content Section Starts -->
+        <section id="ecommerce-header">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="ecommerce-header-items">
+                <div class="result-toggler">
+                  <button class="navbar-toggler shop-sidebar-toggler" type="button" data-bs-toggle="collapse">
+                    <span class="navbar-toggler-icon d-block d-lg-none"><i data-feather="menu"></i></span>
+                  </button>
+                  <div class="search-results">{{ listProduct.length}} results found</div>
+                </div>
+                <div class="view-options d-flex">
+                  <div class="btn-group dropdown-sort">
+                    <!-- <a routerLink="/product/create" type="button" class="btn btn-outline-primary me-1">
+                      New Product
+                    </a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- E-commerce Content Section Starts -->
+
+        <!-- background Overlay when sidebar is shown  starts-->
+        <div class="body-content-overlay"></div>
+        <!-- background Overlay when sidebar is shown  ends-->
+
+        <!-- E-commerce Search Bar Starts -->
+        <section id="ecommerce-searchbar" class="ecommerce-searchbar">
+          <div class="row mt-1">
+            <div class="col-sm-12">
+              <div class="input-group input-group-merge">
+                <input type="text" class="form-control search-product" id="shop-search" placeholder="Search Product"
+                  aria-label="Search..." aria-describedby="shop-search" />
+                <span class="input-group-text"><i data-feather="search" class="text-muted"></i></span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- E-commerce Search Bar Ends -->
+
+        <!-- E-commerce Products Starts -->
+        <section id="ecommerce-products" class="grid-view">
+          <div class="card ecommerce-card" *ngFor="let p of listProduct">
+            <div class="item-img text-center">
+              <a [routerLink]="['/product/update', {id: p.id}]">
+                <img class="img-fluid card-img-top"
+                  [src]="'data:image/png;base64,' + p.banner_img"
+                  alt="banner" /></a>
+            </div>
+            <div class="card-body">
+              <div class="item-wrapper">
+                <div>
+                  <h6 class="item-price sale">${{p.price}} <del *ngIf="p.sale || p.sale != 0">{{p.sale + '%'}}</del></h6>
+                </div>
+              </div>
+              <h6 class="item-name">
+                <a class="text-body" [routerLink]="['/product/update', {id: p.id}]">{{p.name}}</a>
+              </h6>
+              <ul class="card-text item-list__infor">
+                <li class="item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                  </svg>
+                  {{p.view}}
+                  <span class="icon-menu__box float-end" [matMenuTriggerFor]="menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-more-vertical">
+                      <circle cx="12" cy="12" r="1"></circle>
+                      <circle cx="12" cy="5" r="1"></circle>
+                      <circle cx="12" cy="19" r="1"></circle>
+                    </svg>
+                  </span>
+                  <mat-menu #menu="matMenu">
+                    <a mat-menu-item [routerLink]="['/product/update/', {id: p.id}]">Update</a>
+                    <button mat-menu-item (click)="deleteProduct(p.id)">Delete</button>
+                  </mat-menu>
+                </li>
+                <li class="item">revenue: {{p.revenue}}</li>
+                <li class="item">status: {{p.status ? 'public' : 'pravite'}}</li>
+
+                <li class="item">update time: {{p.update_at | date:"dd/MM/yyyy"}}</li>
+                <li class="item">create time: {{p.create_at | date:"dd/MM/yyyy"}}</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <!-- E-commerce Products Ends -->
+
+        <!-- E-commerce Pagination Starts -->
+      
+        <!-- E-commerce Pagination Ends -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END: Content-->

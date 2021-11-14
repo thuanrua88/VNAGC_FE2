@@ -1,0 +1,114 @@
+<div class="app-content content ecommerce-application">
+    <div class="content-wrapper container-xxl p-0 list-view--product">
+        <app-load [isLoading]="load"></app-load>
+        <div class="col-12">
+            <div class="card">
+                <div class="d-flex justify-content-between align-items-center pt-0">
+                    <h2 class="card-header w-auto">Order Manager</h2>
+                    <div>
+                        <button mat-raised-button [matMenuTriggerFor]="query" class="me-2">Menu</button>
+                        <mat-menu #query="matMenu">
+                            <button mat-menu-item (click)="reset()">Reset</button>
+                            <button mat-menu-item (click)="getOrderBlogByMonth(1)">1st quarter</button>
+                            <button mat-menu-item (click)="getOrderBlogByMonth(2)">2st quarter</button>
+                            <button mat-menu-item (click)="getOrderBlogByMonth(3)">3st quarter</button>
+                            <button mat-menu-item (click)="getOrderBlogByMonth(4)">4st quarter</button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-company-table">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>product</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Confirm time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let item of listOrder; let ind = index" (click)="getOrderDetail(ind)"
+                                    class="cursor-pointer" [matMenuTriggerFor]="menu">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="profile-img-container d-flex align-items-center avatar rounded">
+                                                <div class="profile-img">
+                                                    <img [src]="user?.avatar ? user?.avatar : 'assets/images/avatars/default-avatar.jpg'"
+                                                        class="rounded img-fluid" alt="avatar" width="50px" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="fw-bolder">{{item?.user_detail?.fullName}}</div>
+                                                <div class="font-small-2 text-muted">{{item?.user_detail?.email}}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+
+                                            <span>${{item.total}}</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bolder mb-25">{{item.status ? 'paid' : 'unpaid'}}</span>
+                                        </div>
+                                    </td>
+                                    <td><span *ngIf="item.confirmation_date">
+                                        {{item.confirmation_date | date:"yyyy/MM/dd"}}
+                                    </span></td>
+                                </tr>
+                                <mat-menu #menu="matMenu">
+                                    <div class="table-responsive">
+                                        <div *ngIf="OrderDetail.length == 0">Not Data</div>
+
+                                        <table class="table w-400" *ngIf="OrderDetail.length > 0">
+                                            <thead>
+                                                <tr>
+                                                    <th>User</th>
+                                                    <th>Quantity</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="cursor-pointer" *ngFor="let item of OrderDetail">
+                                                    <td>
+                                                        <div
+                                                            class="profile-img-container d-flex align-items-center avatar rounded bg-transparent">
+                                                            <div class="profile-img">
+                                                                <img [src]="user?.bannerImg ? user?.bannerImg : 'assets/images/avatars/default-avatar.jpg'"
+                                                                    class="rounded img-fluid" alt="avatar"
+                                                                    width="40px" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="fw-bolder">{{item?.name}}</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        {{item.quantity}}
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+
+                                                            <span>${{item.total}}</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </mat-menu>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

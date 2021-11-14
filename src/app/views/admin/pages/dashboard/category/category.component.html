@@ -1,0 +1,81 @@
+<app-load [isLoading]="load"></app-load>
+<div class="app-content content ecommerce-application">
+    <div class="content-wrapper container-xxl p-0 list-view--product">
+        <mat-tab-group>
+            <mat-tab label="Category">
+                <section id="ecommerce-products" class="grid-view">
+                    <div class="card ecommerce-card">
+                        <div  class="dropzone dropzone-area dz-clickable" id="dpz-single-file-coverr">
+                            <label class="dz-message" for="avatar">Avatar
+                            </label>
+                            <input type="file" hidden id="avatar" accept="image/*" (change)="updateFile($event, 1)">
+                            <img [src]="'data:image/png;base64,' + avatar" *ngIf="avatar" alt="avatar cover" class="img-avatar">
+                        </div>
+                        <div class="card-body position-relative">
+                            <h6 class="item-name">
+                                <input type="text" class="form-control border-0 outline-none text-center"
+                                    [(ngModel)]="newCategory" name="name" placeholder="new category">
+                            </h6>
+                            <div class="positon-absolute">
+                                <div class="d-flex justify-content-center mt-1">
+                                    <button class="btn btn-outline-primary waves-effect bg-white"
+                                        (click)="addNewCategory()">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card ecommerce-card" *ngFor="let item of listCategory; let i = index">
+                        <!-- <div class="item-img text-center">
+                            <a src="javascript:void(0)">
+                            </a>
+                        </div> -->
+                        <div class="dropzone dropzone-area dz-clickable" id="dpz-single-file-coverr">
+                            <label class="dz-message" [for]="'avat_edit'+i">Avatar
+                            </label>
+                            <input type="file" hidden [id]="'avat_edit'+i" accept="image/*" *ngIf="isEdit" (change)="updateFileEdit($event, i)">
+                                <img class="img-avatar" [src]="'data:image/png;base64,' + item.avatar" [alt]="item.avatar">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="item-name">
+                                <a class="text-body text-center" href="javascript:void(0)" *ngIf="editId != item.id">{{item.name}}</a>
+                                <input type="text" class="form-control border-0 outline-none text-center" [(ngModel)]="editNameCategory" name="name"
+                                    placeholder="new category" *ngIf="editId == item.id && isEdit">
+                            </h6>
+                            <div class="positon-absolute">
+                                <div class="d-flex justify-content-between mt-1 col-7 mx-auto">
+                                    <ng-container *ngIf="editId != item.id; else edited">
+                                        <button class="btn btn-danger waves-effect waves-float waves-light" (click)="editCategory(item)">Edit</button>
+                                        <button class="btn btn-danger waves-effect waves-float waves-light">Delete</button>
+                                    </ng-container>
+                                    <ng-template #edited>
+                                        <button class="btn btn-danger waves-effect waves-float waves-light" (click)="editId=0">Close</button>
+                                        <button class="btn btn-danger waves-effect waves-float waves-light" (click)="saveEditCategory(i)">Save</button>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </mat-tab>
+            <mat-tab label="Hashtag">
+                <app-hashtag></app-hashtag>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
+<ng-template #template>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Category</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+        <p>
+            Related data like blogs containing this category will also be affected, are you sure about this?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button class="demo-button delete-btn btn btn-outline-primary mr-3" (click)="deleteCategory();">
+            Delete
+        </button>
+    </div>
+</ng-template>

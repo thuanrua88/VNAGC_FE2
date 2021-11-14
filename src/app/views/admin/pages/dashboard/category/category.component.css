@@ -1,0 +1,15 @@
+.edit-btn,
+.delete-btn {
+    width: 80px
+}
+
+.input-group .btn {
+    z-index: 3
+}
+.dropzone {
+    min-height: 250px;
+}
+
+.item-name input {
+    box-shadow: 0 3px 10px 0 rgb(34 41 47 / 10%);
+}

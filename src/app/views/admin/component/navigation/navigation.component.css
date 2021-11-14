@@ -1,0 +1,32 @@
+.navigation-main {
+    display: block !important;
+}
+
+.navigation li.has-sub > a::after {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6b7b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-right'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.1rem;
+    height: 1.1rem;
+    width: 1.1rem;
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    -webkit-transform: rotate(0);
+    -ms-transform: rotate(0);
+    transform: rotate(0);
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.main-menu.menu-light .navigation > li > a svg {
+    top: -3px;
+    margin-right: 14px;
+    float: left;
+    -webkit-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+    height: 20px;
+    width: 20px;
+}

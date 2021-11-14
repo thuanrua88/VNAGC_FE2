@@ -1,0 +1,294 @@
+<app-load [isLoading]="loading"></app-load>
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+                <div class="mb-1 breadcrumb-right">
+                    <div class="dropdown">
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="app-todo.html"><i
+                                    class="me-1" data-feather="check-square"></i><span
+                                    class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i
+                                    class="me-1" data-feather="message-square"></i><span
+                                    class="align-middle">Chat</span></a><a class="dropdown-item"
+                                href="app-email.html"><i class="me-1" data-feather="mail"></i><span
+                                    class="align-middle">Email</span></a><a class="dropdown-item"
+                                href="app-calendar.html"><i class="me-1" data-feather="calendar"></i><span
+                                    class="align-middle">Calendar</span></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+
+            <section id="basic-horizontal-layouts">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class="nav nav-pills" role="tablist">
+                                    <h2 class="pl-0">update Product</h2>
+                                </ul>
+                                <div class="row">
+                                    <mat-horizontal-stepper linear #stepper>
+
+                                        <mat-step [stepControl]="formInfor" [editable]="isEditable">
+                                            <form [formGroup]="formInfor" autocomplete="true">
+                                                <ng-template matStepLabel>Infor</ng-template>
+                                                <div class="col-12">
+                                                    <div class="mb-1 row">
+                                                        <div class="col-sm-3">
+                                                            <label class="col-form-label" for="fname-icon">product
+                                                                name</label>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="input-group input-group-merge">
+                                                                <mat-form-field appearance="fill">
+                                                                    <input type="text" id="fname-icon"
+                                                                        class="form-control" formControlName="name"
+                                                                        matInput />
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <mat-form-field appearance="fill" class="w-100">
+                                                                <mat-label>Category</mat-label>
+                                                                <mat-select formControlName="category">
+                                                                    <mat-option *ngFor="let i of listCategory"
+                                                                        [value]="i.id">{{i.name}}</mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 price_box">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label class="col-form-label" for="email-icon">Price</label>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <mat-form-field appearance="fill" floatLabel="always"
+                                                                class="w-100">
+                                                                <input matInput type="number"
+                                                                    class="example-right-align" formControlName="price">
+                                                                <span matPrefix>$&nbsp;</span>
+                                                                <span matSuffix>.00</span>
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <mat-form-field appearance="fill" class="w-100">
+                                                                <mat-label>Sale</mat-label>
+                                                                <mat-select formControlName="sale">
+                                                                    <mat-option *ngFor="let i of listSale" [value]="i">
+                                                                        {{i}}%</mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <!-- <p>{{money}}</p> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="mb-1 row">
+                                                        <div class="col-sm-3">
+                                                            <label class="col-form-label"
+                                                                for="Description">Description</label>
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                            <div class="input-group input-group-merge">
+                                                                <textarea class="form-control" id="Description"
+                                                                    formControlName="description" rows="3"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="mb-1 row">
+                                                        <div class="col-sm-3">
+                                                            <label class="col-form-label" for="pass-icon">Unit</label>
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                            <div class="input-group input-group-merge">
+                                                                <mat-form-field appearance="fill" class="w-100">
+                                                                    <mat-select [(value)]="listUnit[0]"
+                                                                        formControlName="unit">
+                                                                        <mat-option *ngFor="let i of listUnit"
+                                                                            [value]="i">{{i}}</mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="mb-1 row">
+                                                        <div class="col-sm-3">
+                                                            <label class="col-form-label"
+                                                                for="storage_instructions">Storage Instructions</label>
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                            <div class="input-group input-group-merge">
+                                                                <textarea class="form-control" id="storage_instructions"
+                                                                    formControlName="storage_instructions"
+                                                                    rows="3"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="mb-1 row">
+                                                        <div class="col-sm-3">
+                                                            <label class="col-form-label"
+                                                                for="storage_instructions">Status</label>
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                            <div class="mb-1">
+                                                                <div class="form-check">
+                                                                    <mat-slide-toggle formControlName="active">Public
+                                                                    </mat-slide-toggle>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button class="btn btn-primary me-1 float-end"
+                                                        matStepperNext>Next</button>
+                                                </div>
+                                            </form>
+                                        </mat-step>
+                                        <mat-step [stepControl]="formImg" [editable]="isEditable">
+                                            <div [formGroup]="formImg">
+                                                <ng-template matStepLabel>Avatar & Feature</ng-template>
+                                                <div class="col-12">
+                                                    <div class="mb-1 row">
+                                                        <div class="col-sm-3">
+                                                            <label class="col-form-label" for="pass-icon">Avatar &
+                                                                Cover</label>
+                                                        </div>
+                                                        <div class="col-sm-9 d-flex justify-content-around">
+                                                            <div class="col-sm-6">
+                                                                <div action="#"
+                                                                    class="dropzone dropzone-area dz-clickable"
+                                                                    id="dpz-single-file">
+                                                                    <label class="dz-message"
+                                                                        for="avatar">Avatar</label>
+                                                                    <input type="file" hidden id="avatar"
+                                                                        (change)="updateFile($event, 1)"
+                                                                        accept="image/*">
+                                                                    <img [src]="'data:image/png;base64,' + avatar" alt="avatar" *ngIf="avatar"
+                                                                        class="img-avatar">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div action="#"
+                                                                    class="dropzone dropzone-area dz-clickable"
+                                                                    id="dpz-single-file-coverr">
+                                                                    <label class="dz-message" for="avatar_cover">Avatar
+                                                                        cover</label>
+                                                                    <input type="file" hidden id="avatar_cover"
+                                                                        (change)="updateFile($event, 0)"
+                                                                        accept="image/*">
+                                                                    <img [src]="'data:image/png;base64,' + avatar_cover" alt="avatar cover"
+                                                                        *ngIf="avatar_cover" class="img-avatar">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="mb-1 row">
+                                                        <div class="col-sm-3">
+                                                            <label class="col-form-label" for="pass-icon">List img
+                                                                other</label>
+                                                        </div>
+                                                        <div class="col-sm-9 row list_img_product--feature">
+                                                            <ng-container
+                                                                *ngFor="let item of list_img_feature; let i = index">
+                                                                <div class="col-sm-4" *ngIf="item.dataByDb==true">
+                                                                    <div action="#"
+                                                                        class="dropzone dropzone-area dz-clickable"
+                                                                        id="dpz-single-file-feature">
+                                                                        <label class="dz-message"
+                                                                            [for]="'feature_'+i">Avatar</label>
+                                                                        <input type="file" hidden [id]="'feature_'+i"
+                                                                            (change)="updateListFile($event, i)"
+                                                                            accept="image/*">
+                                                                        <img [src]="'data:image/png;base64,' + item.avatar_feature"
+                                                                            alt="avatar cover"
+                                                                            *ngIf="item.avatar_feature"
+                                                                            class="img-avatar">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4"
+                                                                    *ngIf="item.dataByDb==false && item.avatar_feature!=''">
+                                                                    <div action="#"
+                                                                        class="dropzone dropzone-area dz-clickable"
+                                                                        id="dpz-single-file-feature">
+                                                                        <label class="dz-message"
+                                                                            [for]="'feature_'+i">Avatar</label>
+                                                                        <input type="file" hidden [id]="'feature_'+i"
+                                                                            (change)="updateListFile($event, i)"
+                                                                            accept="image/*">
+                                                                        <img [src]="'data:image/png;base64,' + item.avatar_feature"
+                                                                            alt="avatar cover"
+                                                                            *ngIf="item.avatar_feature"
+                                                                            class="img-avatar">
+                                                                    </div>
+                                                                </div>
+                                                            </ng-container>
+                                                            <div class="col-sm-4" *ngIf="list_img_feature.length <= 6">
+                                                                <div action="#"
+                                                                    class="dropzone dropzone-area dz-clickable">
+                                                                    <label class="dz-message" for="feature"
+                                                                        (click)="addSlotImgFeature()">
+                                                                        <svg style="transform: scale(1.5)"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            width="24" height="24" viewBox="0 0 24 24"
+                                                                            fill="none" stroke="currentColor"
+                                                                            stroke-width="2" stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            class="feather feather-plus-circle">
+                                                                            <circle cx="12" cy="12" r="10"></circle>
+                                                                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                                                                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                                                                        </svg>
+                                                                    </label>
+                                                                    <input type="file" hidden id="feature"
+                                                                        (change)="updateListFile($event, list_img_feature.length-1)"
+                                                                        accept="image/*">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button class="btn btn-primary me-1"
+                                                        matStepperPrevious>Back</button>
+                                                    <button class="btn btn-primary me-1" matStepperNext>Next</button>
+                                                </div>
+                                            </div>
+                                        </mat-step>
+                                        <mat-step>
+                                            <ng-template matStepLabel>Done</ng-template>
+                                            <p>You are now done.</p>
+                                            <div>
+                                                <button class="btn btn-primary me-1" matStepperPrevious>Back</button>
+                                                <button class="btn btn-primary me-1"
+                                                    (click)="updateProduct()">Complete</button>
+                                            </div>
+                                        </mat-step>
+                                    </mat-horizontal-stepper>
+                                </div>
+                                <!-- </form> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

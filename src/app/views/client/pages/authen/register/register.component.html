@@ -1,0 +1,86 @@
+<app-load [isLoading]="loading"></app-load>
+<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
+<div class="content-block ms-0">
+    <!-- <div class="container container-page-item-title" data-style="" data-speed="0.1" style="">
+        <div class="row">
+            <div class="col-md-12 col-overlay">
+                <div class="container">
+                    <div class="page-item-title-single page-item-title-page">
+                        <h1 class="page-title">My account</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="page-container container span-col-md-8">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="entry-content clearfix" role="main">
+                    <article class="d-flex align-items-center user-login-wrapper" >
+                        <div class="woocommerce user-login">
+                            <div class="woocommerce-notices-wrapper"></div>
+
+                            <h2>Register</h2>
+                            <form class="woocommerce-form woocommerce-form-login login" [formGroup]="registerForm"
+                                (ngSubmit)="submitForm()">
+                                <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                    <label for="username">Full name&nbsp;<span class="required">*</span></label>
+                                    <div class="position-relative">
+                                        <input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
+                                            style="margin-bottom: 4px"
+                                            oninput="this.value.length > 50 ? this.value='' : ''"
+                                            formControlName="name" id="username">
+                                        <span class="errorInput"
+                                            *ngIf="isInvalid('name') || errorName">This field cannot be ignored</span>
+                                    </div>
+                                </div>
+                                <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                    <label for="email">Username or email address&nbsp;<span
+                                            class="required">*</span></label>
+                                    <div class="position-relative">
+                                        <input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
+                                            style="margin-bottom: 4px"
+                                            id="email" formControlName="email">
+                                        <span class="errorInput" *ngIf="isInvalid('email')">Please
+                                            fill in the correct email structure</span>
+                                    </div>
+                                </div>
+                                <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                    <label for="password">Password&nbsp;<span class="required">*</span></label>
+                                    <div class="position-relative">
+                                        <input class="woocommerce-Input woocommerce-Input--text input-text"
+                                            style="margin-bottom: 4px"
+                                            type="password" autocomplete="current-password" formControlName="password"
+                                            id="password">
+                                        <span class="errorInput" *ngIf="isInvalid('password')">Invalid
+                                            password</span>
+                                    </div>
+                                </div>
+                                <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                    <label for="passwordCF">Confirm Password&nbsp;<span
+                                            class="required">*</span></label>
+                                    <div class="position-relative">
+                                        <input class="woocommerce-Input woocommerce-Input--text input-text"
+                                            style="margin-bottom: 4px"
+                                            type="password" autocomplete="current-password"
+                                            formControlName="confirmPassword" id="passwordCF">
+                                        <span class="errorInput"
+                                            *ngIf="isInvalid('confirmPassword')">invalid confirmation password</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-row form-row-btn">
+                                    <button type="submit"
+                                        class="woocommerce-button button woocommerce-form-login__submit">Sig up</button>
+                                </div>
+                                <p class="woocommerce-LostPassword lost_password" style="text-align: center">
+                                    <a routerLink="/login">Or login</a>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

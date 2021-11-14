@@ -1,0 +1,13 @@
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+}
+.nav-pills .nav-link {
+    padding: .786rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    border: 1px solid transparent;
+}
+
+
+.nav > li > a.active span {color: white}
+.nav > li > a.active:hover span {color: inherit}

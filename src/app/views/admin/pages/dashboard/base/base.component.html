@@ -1,0 +1,423 @@
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- Dashboard Analytics Start -->
+            <section id="dashboard-analytics">
+                <div class="row match-height">
+                    <!-- Greetings Card starts -->
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="card card-congratulations">
+                            <div class="card-body text-center">
+                                <img src="assets/admin/app-assets/images/elements/decore-left.png"
+                                    class="congratulations-img-left" alt="card-img-left" />
+                                <img src="assets/admin/app-assets/images/elements/decore-right.png"
+                                    class="congratulations-img-right" alt="card-img-right" />
+                                <div class="avatar avatar-xl bg-primary shadow">
+                                    <div class="avatar-content">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-award font-large-1">
+                                            <circle cx="12" cy="8" r="7"></circle>
+                                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <h1 class="mb-1 text-white">Congratulations {{profile?.fullName}}</h1>
+                                    <!-- <p class="card-text m-auto w-75">
+                                        You have done <strong>57.6%</strong> more sales today. Check your new badge in
+                                        your profile.
+                                    </p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Greetings Card ends -->
+
+                    <!-- Subscribers Chart Card starts -->
+                    <div class="col-lg-6 col-sm-12 col-12">
+                        <div class="card card-statistics">
+                            <div class="card-header">
+                                <h4 class="card-title">Statistics</h4>
+                            </div>
+                            <div class="card-body statistics-body">
+                                <div class="row">
+                                    <div class="col-sm-6 col-12 mb-2">
+                                        <div class="d-flex flex-row">
+                                            <div class="avatar bg-light-primary me-2">
+                                                <div class="avatar-content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-trending-up avatar-icon">
+                                                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                                        <polyline points="17 6 23 6 23 12"></polyline>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="my-auto">
+                                                <h5 class="fw-bolder mb-0">{{Statistics?.coutOrder}} -
+                                                    {{'$'+Statistics?.countTotal}}</h5>
+                                                <p class="card-text font-small-3 mb-0">Orders
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-6 col-12 mb-2">
+                                        <div class="d-flex flex-row">
+                                            <div class="avatar bg-light-info me-2">
+                                                <div class="avatar-content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-user avatar-icon">
+                                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                        <circle cx="12" cy="7" r="4"></circle>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="my-auto">
+                                                <h4 class="fw-bolder mb-0">{{Statistics?.coutAccout}}</h4>
+                                                <p class="card-text font-small-3 mb-0">Customers</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12 mb-2">
+                                        <div class="d-flex flex-row">
+                                            <div class="avatar bg-light-danger me-2">
+                                                <div class="avatar-content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-box avatar-icon">
+                                                        <path
+                                                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                                        </path>
+                                                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="my-auto">
+                                                <h4 class="fw-bolder mb-0">{{Statistics.countProduct}}</h4>
+                                                <p class="card-text font-small-3 mb-0">Products</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="d-flex flex-row">
+                                            <div class="avatar bg-light-success me-2">
+                                                <div class="avatar-content">
+                                                    <svg _ngcontent-cau-c151="" xmlns="http://www.w3.org/2000/svg"
+                                                        width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" class="feather feather-file-text">
+                                                        <path _ngcontent-cau-c151=""
+                                                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+                                                        </path>
+                                                        <polyline _ngcontent-cau-c151="" points="14 2 14 8 20 8">
+                                                        </polyline>
+                                                        <line _ngcontent-cau-c151="" x1="16" y1="13" x2="8" y2="13">
+                                                        </line>
+                                                        <line _ngcontent-cau-c151="" x1="16" y1="17" x2="8" y2="17">
+                                                        </line>
+                                                        <polyline _ngcontent-cau-c151="" points="10 9 9 9 8 9">
+                                                        </polyline>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="my-auto">
+                                                <h4 class="fw-bolder mb-0">{{Statistics.countBlog}}</h4>
+                                                <p class="card-text font-small-3 mb-0">Blog</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Orders Chart Card ends -->
+                </div>
+                <div class="row match-height">
+                    <!-- Timeline Card -->
+                    <!-- <div class="col-lg-4 col-12">
+        <div class="card card-user-timeline">
+            <canvas baseChart chartType="pie" [data]="chartDataPie" [colors]="chartColorsPie" [labels]="chartLabelsPie"
+                [options]="chartOptionsPie" [plugins]="chartPluginsPie" [legend]="chartLegendPie">
+            </canvas>
+        </div>
+    </div> -->
+                    <!--/ Timeline Card -->
+
+                    <!-- Sales Stats Chart Card starts -->
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between pb-0">
+                                <h4 class="card-title">Orders index for the year</h4>
+                                <div class="dropdown chart-dropdown">
+                                    <button class="btn btn-sm border-0 dropdown-toggle p-50" type="button"
+                                        id="dropdownItem4" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        In year
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas baseChart chartType="bar" [datasets]="chartData" [labels]="chartLabels"
+                                    [options]="chartOptions" [plugins]="" [legend]="chartLegend">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sales Stats Chart Card ends -->
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between pb-0">
+                                <h4 class="card-title">Statistics by day</h4>
+                                <div class="">
+                                    <input type="date" #dateSelect id="fp-SelectTime" class="form-control border-0 flatpickr-basic flatpickr-input active"
+                                        (change)="fGetTopOrderByDay(dateSelect.value); fGetTopBlogByDay(dateSelect.value)" [max]="nowDate" >
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Count Order</th>
+                                            <th>Total</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                Order
+                                            </th>
+                                            <td>
+                                                {{orderInDay?.countOrderInDay}}
+                                            </td>
+                                            <td>{{orderInDay?.totalInDay}}</td>
+                                            <td>{{timeSelect}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Blog</th>
+                                            <td>
+                                                {{blogInDay?.Blog}}
+                                            </td>
+                                            <td></td>
+                                            <td>{{timeSelect}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- App Design Card -->
+
+                    <!--/ App Design Card -->
+                </div>
+                <div class="row match-height">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between pb-0">
+                                <h4 class="card-title">Blogs index in 12 months</h4>
+                                <div class="dropdown chart-dropdown">
+                                    <button class="btn btn-sm border-0 dropdown-toggle p-50" type="button" id="dropdownItem4"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        In year
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas baseChart chartType="bar" [colors]="chartColors_blog" [datasets]="chartData_blog"
+                                    [labels]="chartLabels_blog" [options]="chartOptions_blog" [plugins]="" [legend]="chartLegend_blog">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="card">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="flex-grow-1">
+                                            <h5 class="mb-1">Ranking of the highest rated products</h5>
+                                            <div class="fs-13px">Top 6 of the highest rated products</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-1"
+                                        *ngFor="let item of listProductRating; let i = index">
+                                        <div
+                                            class="d-flex align-items-center justify-content-center me-3 width-50 height-50 p-1">
+                                            <img [src]="item.banner_img" alt="avatar"
+                                                class="ms-100 mh-100 rounded img_product">
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div>
+                                                <div class="text-dark font-weight-bold clamp-1">{{item.name}}</div>
+                                                <div class="fs-13px">{{'$' + item.price}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="ps-3 text-center">
+                                            <div class="text-dark font-weight-bold">{{item.rateAvg}}</div>
+                                            <div class="fs-13px">Rating Avg</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="card">
+                            <div class="card mb-3">
+
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="flex-grow-1">
+                                            <h5 class="mb-1">List of posts with the most views</h5>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-1 cursor-pointer"
+                                        *ngFor="let item of listTopBlogView; let i = index"
+                                        [routerLink]="['/blog/blog-detail/', {id: i.id}]">
+                                        <div
+                                            class="d-flex align-items-center justify-content-center me-3 width-50 height-50">
+                                            <img [src]="item.banner_img" alt="avatar"
+                                                class="ms-100 mh-100 rounded img_product">
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div>
+                                                <div class="text-dark font-weight-bold clamp-1">{{item.name}}</div>
+                                                <div class="fs-13px">{{'Author: ' + item.author}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="ps-3 text-center">
+                                            <div class="text-dark font-weight-bold">
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-eye">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                        <circle cx="12" cy="12" r="3"></circle>
+                                                    </svg>
+                                                </span>
+                                                {{item.view}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="card card-app-design">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="flex-grow-1">
+                                        <h5 class="mb-1">Top product popular</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">Product</th>
+                                                    <th>Views</th>
+                                                    <th>Revenue</th>
+                                                    <th>Sales</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of listProductPopular; let i = index">
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar rounded">
+                                                                <div class="avatar-content">
+                                                                    <img [src]="item.banner_img" alt="Toolbar svg">
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="fw-bolder">{{item.name}}</div>
+                                                                <div class="font-small-2 text-muted">{{'$: ' +
+                                                                    item.price}}</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="text-nowrap">
+                                                        <div class="d-flex flex-column">
+                                                            <span class="fw-bolder mb-25">{{item.view}}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{item.revenue}}</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="fw-bolder me-1">{{item.sale}}</span>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                                height="14" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-trending-down text-danger font-medium-1">
+                                                                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6">
+                                                                </polyline>
+                                                                <polyline points="17 18 23 18 23 12"></polyline>
+                                                            </svg>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- <div class="d-flex align-items-center mb-1" *ngFor="let item of listProductPopular; let i = index"
+                                   >
+                                    <div class="d-flex align-items-center justify-content-center me-3 width-50 height-50">
+                                        <img [src]="item.banner_img" alt="avatar" class="ms-100 mh-100 rounded img_product">
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div>
+                                            <div class="text-dark font-weight-bold clamp-1">{{item.name}}</div>
+                                            <div class="fs-13px">{{'$: ' + item.price}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="ps-3 text-center">
+                                        <div class="text-dark font-weight-bold">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-eye">
+                                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                    <circle cx="12" cy="12" r="3"></circle>
+                                                </svg>
+                                            </span>
+                                            {{item.view}}
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </section>
+            <!-- Dashboard Analytics end -->
+
+        </div>
+    </div>
+</div>
+<app-load [isLoading]="load"></app-load>

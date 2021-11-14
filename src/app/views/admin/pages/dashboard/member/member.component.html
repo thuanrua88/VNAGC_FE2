@@ -1,0 +1,57 @@
+<div class="app-content content ecommerce-application">
+    <div class="content-wrapper container-xxl p-0 list-view--product">
+        <div class="col-12">
+            <div class="card">
+                <div class="d-flex justify-content-between align-items-center pt-0">
+                    <h2 class="card-header w-auto">Member List</h2>
+                </div>
+            </div>
+            <div class="card card-company-table">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Intro</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Count Blog</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of listMember" class="cursor-pointer" [routerLink]="['/page-profile', {id: item.id}]">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar rounded">
+                                                <div class="avatar-content">
+                                                    <span class="avatar m-0"><img
+                                                        
+                                                            [src]="'data:image/png;base64,' + item.avatar"
+                                                            alt="avatar" height="40" width="40" class="rounded-circle"></span>
+                                                </div>
+                                            </div>
+                                            <div class="media-body"><a
+                                                    href="javascript:void(0)"
+                                                    class="font-weight-bold d-block text-nowrap" target="_self">
+                                                    {{item.fullName}} </a>
+                                                <!-- <small
+                                                    class="text-muted">@bkrabbe1d</small> -->
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="clamp-1">{{item.email}}</span>
+                                    <td class="text-nowrap">
+                                        {{item.phoneNumber}}
+                                    </td>
+                                    <td>{{item.countBlog}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <app-load [isLoading]="load"></app-load>

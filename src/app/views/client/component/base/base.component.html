@@ -1,0 +1,11 @@
+<div data-rsssl=1
+    class="home blog theme-cookandmeal woocommerce-no-js blog-post-transparent-header-disable blog-slider-disable blog-enable-dropcaps blog-enable-images-animations blog-enable-sticky-sidebar blog-enable-sticky-header blog-style-corners-rounded blog-home-block-title-center blog-home-block-title-style-sideborders blog-home-block-subtitle-style-regular blog-post-details-align-left">
+
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+    <div class="buy-now" *ngIf="checkAuthen">
+        <a routerLink="/profile/create-blog"
+            class="btn btn-danger waves-effect waves-float waves-light">Post Blog</a>
+    </div>
+    <app-footer></app-footer>
+</div>

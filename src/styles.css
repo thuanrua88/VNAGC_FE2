@@ -1,0 +1,303 @@
+.home { background: #fff}
+
+/* bs */
+
+.mr-3 {
+  margin-right: 1rem !important;
+}
+
+.text-center { text-align: center;}
+/* Model */
+.modal .modal-content { transform: translateY(100%)}
+/* End Model */
+.buy-now .btn { box-shadow: none !important; border: none !important}
+.font-weight-bold {
+    font-weight: 600!important;
+}
+/* /bs */
+/* Home */
+#homePage .navigation {
+  padding-bottom: 0px !important;
+}
+
+.clamp-1,
+.clamp-2,
+.clamp-3,
+.clamp-4 {
+  display: inline-block;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.clamp-2 {
+  -webkit-line-clamp: 2;
+}
+.clamp-3 {
+  -webkit-line-clamp: 3;
+}
+.clamp-4 {
+  -webkit-line-clamp: 4;
+}
+
+/* Blog */
+.home .blog-post .cookandmeal-post .post-date,
+.home .blog-post .cookandmeal-post .post-read-time,
+.home .blog-post .cookandmeal-post .post-title,
+.blog-posts-list .cookandmeal-post .post-date,
+.blog-posts-list .cookandmeal-post .post-read-time {
+    color: var(--color-grey);
+}
+
+.scrollbar-y::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.scrollbar-y::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.scrollbar-y::-webkit-scrollbar-thumb
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2);
+	background-color: #c1c1c1;
+}
+
+.scrollbar-x::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.scrollbar-x::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.scrollbar-x::-webkit-scrollbar-thumb
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2);
+	background-color: #c1c1c1;
+}
+
+.cookandmeal-post-listx {
+  width: 100%;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  
+}
+
+.cookandmeal-post-list {
+  margin-top:12px;
+  margin-top:12px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.cookandmeal-post-item {
+  margin-bottom:12px;
+}
+.post-categories-name {
+  width: 100%;
+  text-align: center;
+  display:block;
+  padding:10px 16px 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.post-categories-product {
+  flex-direction: column;
+}
+/* End Blog */
+
+/* End Home */
+
+/* Show err */
+.woocommerce-form {
+  position: relative;
+}
+.woocommerce-form .errorInput {
+  right: 1.25em;
+  top: 10px;
+  color: var(--danger);
+  padding-top: 4px;
+}
+/* END Show err */
+:root {
+  --danger: #a94442;
+}
+/* Admin */
+.breadcrumbs-top .col-12 {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+
+  align-items: center;
+}
+/* ENd Admin */
+
+/* List product Admin */
+/* Img */
+
+.ecommerce-card .item-img a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.ecommerce-card .item-img a img {
+  position: absolute !important;
+  width: 100% !important;
+  left: 0 !important;
+  top: 0 !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+.home .ecommerce-card .item-img {
+  padding-bottom: 100%;
+}
+.home .ecommerce-card .item-img a {
+  position: inherit;
+}
+.ecommerce-card .item-img a img:hover {
+  transform: scale(1.5);
+  transition: 0.5s;
+}
+.home .ecommerce-card .item-img a img:hover {
+  all: unset;
+}
+.home .ecommerce-card .item-img a img:last-child,
+.home .ecommerce-card .item-img a:hover img:first-child {
+  /* display: none; */
+  transition: 0.5s;
+  opacity: 0;
+}
+.home .ecommerce-card .item-img a:hover img:last-child {
+  /* display: block; */
+  opacity: 1;
+  transition: 0.5s;
+}
+.backdrop,
+.sk-cube-grid {
+  position: fixed !important;
+}
+
+.dropzone {
+  position: relative;
+}
+.dropzone.error {
+  border-color: #ea5455 !important
+}
+.img-avatar {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+.list_img_product--feature {
+  margin: 0px !important;
+}
+.list_img_product--feature .dropzone {
+  min-height: 150px;
+}
+.list_img_product--feature .col-sm-4 {
+  margin: 1rem 0rem;
+}
+.list_img_product--feature .dz-message::before {
+  background: none;
+}
+
+/* END Img */
+
+.icon-menu__box {
+  cursor: pointer;
+}
+
+.item-list__infor {
+  /* display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important; */
+
+  list-style: none;
+  padding-left: 0px;
+  padding-top: 1rem;
+}
+ .mat-menu-panel { max-width: auto !important}
+.item-list__infor li {
+  margin-inline-end: 0.5rem;
+  text-transform: capitalize;
+}
+
+.item-list__infor li * {
+  vertical-align: text-top;
+}
+
+/* END List product Admin */
+
+/* Create product */
+.price_box .mat-input-element {
+  text-align: right;
+}
+
+/* .mat-step-icon .mat-icon {
+    display: none
+} */
+/* Blogger page */
+fieldset .box-metarial,
+fieldset .box-content,
+fieldset .box-step {
+  border: 1px dashed rgba(128, 128, 128, 0.585);
+  margin-bottom: 1rem;
+}
+
+.admin .container-page-item-title.container {
+  width: auto !important;
+  margin-top: 30px;
+}
+/* End Blogger page */
+
+/* Lisst product */
+.woocommerce-loop-product__title {
+  display: inline-block;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+/* End lít Product */
+
+/* Paypal */
+#paypal-button-container {
+  height: 45px;
+  overflow: hidden;
+}
+/* end paypal */
+
+.btn-trash {
+    padding: 6px 12px !important;
+    background-color: #fff;
+    border-radius: 4px !important;
+}
+
+
+.list-style-none {
+  list-style: none
+}
+.w-400 { width: 400px}
+.cdk-overlay-connected-position-bounding-box .mat-menu-panel { max-width: initial !important}

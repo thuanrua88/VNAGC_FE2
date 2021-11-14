@@ -1,0 +1,19 @@
+.item-img {
+    position: relative;
+    padding-bottom: 50%;
+}
+.ecommerce-card .item-img a {
+    width: 100%;
+    position: absolute !important;
+    overflow: hidden;
+}
+
+.ecommerce-card .item-img a:hover img {
+    transform: none !important
+}
+.ecommerce-card:hover {
+    -webkit-transform: none !important;
+    -ms-transform: none !important;
+    transform:none !important;
+    box-shadow: none !important;
+}

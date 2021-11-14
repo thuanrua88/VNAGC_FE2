@@ -1,0 +1,8 @@
+@media only screen and (min-width: 768px) {
+    .col-md-12 .alignwide {
+        margin: auto;
+    }
+}
+.mb-5 {
+    margin-bottom: 4rem !important;
+}

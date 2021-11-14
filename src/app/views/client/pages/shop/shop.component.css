@@ -1,0 +1,7 @@
+.row-cols-sm-4 > * {
+    width: 25% !important
+}
+
+ul.products li.product {
+    padding: .25rem
+}

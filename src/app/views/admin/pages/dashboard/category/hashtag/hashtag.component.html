@@ -1,0 +1,114 @@
+<div class="row m-0 mb-2">
+    <div class="col-md-6">
+        <div class="demo-button-container mt-2">
+            <div class="input-group">
+                <input (keyup)="applyFilter($event)" class="form-control border-0 outline-none"
+                    placeholder="Search name" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 pe-0">
+        <div class="demo-button-container mt-2">
+            <div class="input-group">
+                <input type="text" class="form-control border-0 outline-none" [(ngModel)]="newCategory" required name="name">
+                <button class="btn btn-outline-primary waves-effect bg-white" type="submit" (click)="addNewCategory()">
+                    Create
+                </button>
+            </div>
+            <p class="error" *ngIf="newCategory==''">Field is required</p>
+        </div>
+    </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="width-400"> Name </th>
+        <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="editId!=element.id">
+                <span class="clamp-2 pe-3">
+                    {{element.name}}
+                </span>
+            </ng-container>
+            <ng-container *ngIf="editId==element.id && isEdit">
+                <input type="text" class="form-control" [(ngModel)]="editNameCategory" name="name">
+            </ng-container>
+        </td>
+    </ng-container>
+
+    <!-- count blg Column -->
+    <ng-container matColumnDef="countBlog">
+        <th mat-header-cell *matHeaderCellDef> Count Blog </th>
+        <td mat-cell *matCellDef="let element"> 100 </td>
+    </ng-container>
+
+    <!-- Time Create -->
+    <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef> Create at </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdDate | date:"yyyy/MM/dd HH:mm"}} </td>
+    </ng-container>
+
+    <!-- Action -->
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="width-150">
+            <div class="text-right pe-5">Action</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <div class="d-flex">
+                <ng-container *ngIf="editId!=element.id">
+                    <button class="demo-button edit-btn btn btn-outline-primary mr-3"
+                        (click)="editCategory(element.id)">
+                        Edit
+                    </button>
+                    <button class="demo-button delete-btn btn btn-outline-primary mr-3"
+                        (click)="openModal(template, element); ">
+                        Delete
+                    </button>
+                </ng-container>
+                <ng-container *ngIf="editId==element.id && isEdit">
+                    <button class="demo-button edit-btn btn btn-outline-primary mr-3"
+                        (click)="saveEditCategory(element.index)">
+                        Save
+                    </button>
+                    <button class="demo-button delete-btn btn btn-outline-primary mr-3"
+                        (click)="editId=0; isEdit=false">
+                        Close
+                    </button>
+                </ng-container>
+
+
+            </div>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Data not found!!! </td>
+    </tr>
+</table>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Hashtag</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+        <p>
+            Related data like blogs containing this hashtag will also be affected, are you sure about this?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button class="demo-button delete-btn btn btn-outline-primary mr-3" (click)="deleteCategory();">
+            Delete
+        </button>
+    </div>
+</ng-template>

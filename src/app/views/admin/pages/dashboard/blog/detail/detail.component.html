@@ -1,0 +1,230 @@
+<app-load [isLoading]="loading"></app-load>
+
+<div class="content-block post-header-inheader post-sidebar-disable mb-5">
+    <div class="container w-100 container-page-item-title with-bg"
+        [ngStyle]="{'background-image': 'url(' + 'data:image/png;base64,' + blog?.banner_img + ')'}">
+        <div class="row">
+            <div class="col-md-12 col-overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-item-title-single">
+                                <div class="cookandmeal-post-single cookandmeal-post">
+                                    <div class="post-categories"><a *ngFor="let item of blog?.hash_tags"
+                                            href="javascript:void(0)" style="background-color: #e5a484;"><i
+                                                class="fa fa-tag cat-dot"></i><span
+                                                class="cat-title">{{item}}</span></a></div>
+                                    <div class="cookandmeal-post-details">
+                                        
+                                        <h1 class="post-title entry-title">{{blog?.summary}}</h1>
+                                        <div class="post-date"><span class="entry-date published updated">{{
+                                                blog?.create_at | date:"yyyy/MM/dd"}}</span></div>
+                                        <div class="post-read-time" *ngIf="blog?.cooking_time"><i class="fa fa-clock-o"
+                                                aria-hidden="true"></i>{{blog?.cooking_time}}
+                                        </div>
+                                        <div class="post-details-bottom post-details-bottom-inline">
+
+                                            <div class="post-info-wrapper">
+                                                <div class="post-info-comments"><i class="fa fa-comment-o"
+                                                        aria-hidden="true"></i><a href="javascript:void(0)">0</a>
+                                                </div>
+
+                                                <div class="post-info-views"><i class="fa fa-eye"
+                                                        aria-hidden="true"></i>{{blog?.view}}</div>
+                                                <div class="post-info-likes"><a href="javascript:void(0)"
+                                                        class="post-like-button" data-id="378"><i class="fa fa-heart-o"
+                                                            aria-hidden="true"></i></a></div>
+                                            </div>
+
+                                            <div class="post-info-share">
+                                                <div class="post-social-wrapper">
+                                                    <div class="post-social-title"><span
+                                                            class="post-social-title-text">Share</span></div>
+                                                    <div class="post-social-frame">
+                                                        <div class="post-social">
+                                                            <a title="Share with Facebook" href="https://facebook.com/"
+                                                                class="facebook-share"> <i
+                                                                    class="fa fa-facebook"></i></a><a title="Tweet this"
+                                                                href="https://facebook.com/" class="twitter-share"> <i
+                                                                    class="fa fa-twitter"></i></a><a
+                                                                title="Share with LinkedIn" href="https://facebook.com/"
+                                                                class="linkedin-share"> <i
+                                                                    class="fa fa-linkedin"></i></a><a title="Pin this"
+                                                                href="https://facebook.com/" class="pinterest-share"> <i
+                                                                    class="fa fa-pinterest"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-container container span-col-md-12 post-single-content">
+        <div class="row">
+            <div class="col-md-12 post-single-content">
+                <div class="blog-post blog-post-single hentry clearfix">
+                    <article id="post-378"
+                        class="post-378 post type-post status-publish format-standard has-post-thumbnail category-pasta tag-baking tag-easy tag-food tag-recipe"
+                        role="main">
+                        <div class="post-content-wrapper">
+                            <div class="post-content clearfix">
+
+                                <div class="entry-content">
+                                    <h2><strong>Summary</strong></h2>
+                                    <!-- <p class="has-medium-font-size">{{blog?.summary}}</p> -->
+                                    <h2><strong>Description</strong></h2>
+                                    <p class="has-medium-font-size">{{blog?.description}}</p>
+                                    <h2><strong>Step by step</strong></h2>
+                                    <p>{{blog?.steps}}</p>
+                                    <!-- <ng-container *ngFor="let item of blog?.content">
+                                        <h2>{{item.name}}</h2>
+                                        <hr class="wp-block-separator is-style-wide">
+                                        <p>{{item.content}}</p>
+                                        <hr class="wp-block-separator is-style-dots">
+                                        <div class="wp-block-cover alignwide has-background-dim has-parallax is-position-center-center"
+                                            [ngStyle]="{'background-image': 'url(' + item?.banner_img + ')'}">
+                                        </div>
+                                    </ng-container> -->
+                                    <!-- <h2>Special ingredients</h2> -->
+                                    <!-- <hr class="wp-block-separator is-style-wide"> -->
+                                    <!-- <ul>
+                                        <li *ngIf="let item of blog?.metarial">
+                                            {{item.mass}}&nbsp;{{item.unit}}&nbsp;{{item?.title}}</li>
+                                    </ul> -->
+                                    <!-- <p>Looking for other egg-based savory recipes? Try these:</p>
+
+                                    <p>Once you prep your ingredients, you’re ready to bake! Here’s what you need to do:
+                                    </p> -->
+                                    
+                                </div>
+
+                                <div class="cookandmeal-social-share-fixed sidebar-position-disable"
+                                    style="position: absolute; bottom: auto; top: 0px; margin-top: 0px; opacity: 1;">
+                                    <div class="post-social-wrapper">
+                                        <div class="post-social-title"><span class="post-social-title-text">Share</span>
+                                        </div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </article>
+                    <!-- <div class="post-recipe-block with-bg" id="post-recipe-block" vocab="https://schema.org/"
+                        typeof="Recipe"> -->
+                        <!-- <div class="post-recipe-details">
+                            <div class="post-recipe-details-column">
+                                <h4>Ingredients</h4>
+                                <ul>
+                                    <li *ngFor="let item of blog?.metarial">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        <p property="recipeIngredient">
+                                            {{item.mass}}&nbsp;{{item.unit}}&nbsp;{{item?.title}}</p>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="post-recipe-instructions-group">
+                            <h4>Instructions</h4>
+                            <p>{{blog?.steps}}</p> -->
+                            <!-- <div class="post-recipe-instruction" *ngFor="let item of blog?.step; let i = index">
+                                <div class="post-recipe-step">{{i + 1}}</div>
+                                <div class="post-recipe-instruction-content">
+                                    <div class="post-recipe-instruction-title">
+                                        <h4 property="recipeInstructions">{{item.name}}</h4>
+                                    </div>
+                                    <div class="post-recipe-instruction-text" property="recipeInstructions">
+                                        {{item.description}}</div>
+                                </div>
+                            </div> -->
+                            <!-- <div class="post-recipe-instruction">
+                                <div class="post-recipe-step">2</div>
+                                <div class="post-recipe-instruction-content">
+                                    <div class="post-recipe-instruction-title">
+                                        <h4 property="recipeInstructions">Next step - preparation!</h4>
+                                    </div>
+                                    <div class="post-recipe-instruction-text" property="recipeInstructions">Remove the
+                                        top 1/3 of the bread and then pull out some of the insides to create space for
+                                        the eggs, being careful not to remove all of the bread, you want a thick layer
+                                        of bread for your boat. Rub the inside of the bread with olive oil and
+                                        everything bagel spice or salt and pepper. Bake for 8-10 minutes or until the
+                                        bread is toasted.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-recipe-instruction">
+                                <div class="post-recipe-step">3</div>
+                                <div class="post-recipe-instruction-content">
+                                    <div class="post-recipe-instruction-title">
+                                        <h4 property="recipeInstructions">And now!</h4>
+                                    </div>
+                                    <div class="post-recipe-instruction-text" property="recipeInstructions">Meanwhile,
+                                        whisk together the eggs, milk, and a pinch each of salt, pepper, and red pepper
+                                        flakes. Stir in the chives, spinach, and havarti.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-recipe-instruction">
+                                <div class="post-recipe-step">4</div>
+                                <div class="post-recipe-instruction-content">
+                                    <div class="post-recipe-instruction-title">
+                                        <h4 property="recipeInstructions">Final</h4>
+                                    </div>
+                                    <div class="post-recipe-instruction-text" property="recipeInstructions">Sprinkle the
+                                        bottom of the bread with 1/2 cup cheddar, then drizzle over the pesto. Slowly
+                                        pour in the eggs, allow the mix to sink into the boat. Top with the remaining
+                                        cheddar. Bake 30-35 minutes, until just set in the center.
+                                    </div>
+                                </div>
+                            </div> -->
+                        <!-- </div> -->
+
+                        <!-- <div class="post-recipe-notes">
+                            <h4>Notes</h4>
+                            Kid-Friendly Adaptation: Cook the chicken in broth instead of buffalo sauce. Shred and drain
+                            off excess liquid. Put some of the chicken aside for the kiddos (plain, no sauce) and toss
+                            the remaining chicken with the buffalo sauce before you broil it.
+                        </div> -->
+                    <!-- </div> -->
+
+                    <!-- <hr class="wp-block-separator is-style-wide"> -->
+                    <a href="{{blog?.url_video_youtube}}" target="_blank" *ngIf="blog?.url_video_youtube">Watch tutorials on youtube</a>
+                    <div class="cookandmeal-post cookandmeal-post-bottom">
+                        <div class="post-details-bottom post-details-bottom-single">
+
+                            <div class="post-info-wrapper">
+                                <div class="post-info-comments"><i class="fa fa-comment-o" aria-hidden="true"></i><a
+                                        href="javascript:void(0)">0</a>
+                                </div>
+
+                                <div class="post-info-views"><i class="fa fa-eye" aria-hidden="true"></i>{{blog?.view}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="nav-post nav-post-next cookandmeal-post">
+        <a [routerLink]="['/page-profile', blog?.user_id]">
+            <div class="nav-post-button-title me-1">Visit the author<i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>
+        </a>
+    </div>
+</div>

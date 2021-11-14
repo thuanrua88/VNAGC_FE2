@@ -1,0 +1,90 @@
+<app-load [isLoading]="load"></app-load>
+<ng-container *ngIf="!load">
+<div class="page-container container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div id="product-15"
+                class="product type-product post-15 status-publish first instock product_cat-hoodies has-post-thumbnail featured shipping-taxable purchasable product-type-simple">
+                <div class="row">
+                    <div class="col-md-6 d-block">
+                        <div class="woocommerce-product-gallery__image flex-active-slide"
+                            style="height:460px; width: 460x; margin-right: 0px; display: block; position: relative; overflow: hidden;">
+                            <a href="javascript:void(0)">
+                                <img width="600" height="600" [src]="avatar" class="" alt="" loading="lazy"
+                                    title="shop-4" sizes="(max-width: 600px) 100vw, 600px" draggable="false"></a><img
+                                class="zoomImg"
+                                style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 800px; height: 800px; border: none; max-width: none; max-height: none;">
+                        </div>
+                        <div style="height: 142px">
+                            <owl-carousel-o #carousel [options]="customOptions" class="property-slide">
+                                <ng-template carouselSlide *ngFor="let item of listAvatar_feature;let i = index"
+                                    style="height:140px ; width: 140px">
+                                    <div class="slide" style="height:140px; width: 140px; margin-right:0">
+                                        <div class="card mb-4 p-10px pb-0 bg-blue-celestia"
+                                            style="height:140px; width: 140px;">
+                                            <div style="width: 140px; height: 140px" class="cover-image" #myPhotoSliide>
+                                                <img style="width: 140px; height: 140px; margin-left: 0"
+                                                    class="img-fluid card-img-top" [src]="item.avatar_feature"
+                                                    alt="banner" (click)="avatarSelect = item.avatar_feature" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </owl-carousel-o>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="summary entry-summary">
+                            <h1 class="product_title entry-title">{{product?.name}}</h1>
+                            <p class="price">
+                                <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span
+                                                class="woocommerce-Price-currencySymbol">$</span>{{product?.sale}}</bdi></span>
+                                </del>
+                                <ins><span class="woocommerce-Price-amount amount amount-price"><bdi><span
+                                                class="woocommerce-Price-currencySymbol">$</span>{{product?.price}}</bdi></span></ins>
+
+                            </p>
+                            <div class="woocommerce-product-details__short-description">
+                                <p>{{product?.description}}</p>
+                            </div>
+
+
+                            <div class="cart"
+                                action="https://wp.wp-preview.com/cookandmeal/cookandmeal-6/product/beanie-with-logo/"
+                                method="post" enctype="multipart/form-data" style="display: flex">
+
+                                <div class="quantity">
+                                    <label class="screen-reader-text" for="quantity_613430137367f">Beanie with Logo
+                                        quantity</label>
+                                    <input type="number" class="input-text qty text" value="1" step="1" min="1" max=""
+                                        [(ngModel)]="quantity" size="4">
+                                </div>
+
+                                <button type="submit" name="add-to-cart" value="891"
+                                    class="single_add_to_cart_button button alt" (click)="addtoCart()">
+                                    Add tocart</button>
+
+                            </div>
+
+
+                            <div class="product_meta">
+                                <span class="sku_wrapper">SKU: <span class="sku">43473</span></span><br />
+                                <span class="posted_in">Category: <a
+                                        href="../../product-category/accessories/index.html"
+                                        rel="tag">Accessories</a></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+</ng-container>

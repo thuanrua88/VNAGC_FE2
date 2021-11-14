@@ -68,46 +68,23 @@ export class ListBlogComponent implements OnInit {
 
   timeSelect = new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate();
   newDate = this.timeSelect;
-  getOrderBlogByMonth(type) {
-    let date = this.timeSelect;
-    switch (type) {
-      case 1:
-        // start = "01";
-        // end = "03"
-        break;
-      case 2:
-        // start = "04";
-        // end = "06"
-        break;
-      case 3:
-        // start = "07";
-        // end = "09"
-        break;
-      case 4:
-        // start = "10";
-        // end = "12"
-        break;
-      default:
-        break;
-    }
-    this.loading = true;
-    this.dashBoardService.GetTopBlogByDay(date).subscribe(
-      dt => {
-        this.loading = false;
-        console.log(dt)
+ 
+  listBlognotActive;
+  getBlogNotActive() {
+    this.listBlognotActive = this.listBlog;
+    this.listBlog = [];
+    this.listBlognotActive.forEach(e => {
+      if (e.status == false) {
+        this.listBlog.push(e)
       }
-    )
+    })
   }
 
   reset() {
     this.loading = true;
-    Promise.all(
-      [
-        // this.getAllOrder()
-      ]
-    ).then(
-      (dt: any) => {
-        this.listBlog = dt[0].Data?.Items;
+    this.blogService.getAllBlogeres().subscribe(
+      dt => {
+        this.listBlog = dt.Data.Items;
         this.loading = false;
       },
       err => {

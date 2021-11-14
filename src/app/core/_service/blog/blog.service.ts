@@ -27,7 +27,8 @@ export class BlogService {
   }
 
   activeBlog(data) {
-    return this.helperService.post("Blog/activeBlog", data);
+    let param = `?id=${data.id}&status=${data.status}`
+    return this.helperService.post("Blog/activeBlog" + param, data);
   }
 
   delete(id) {

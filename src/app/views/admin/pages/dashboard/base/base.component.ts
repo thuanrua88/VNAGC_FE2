@@ -106,7 +106,7 @@ export class BaseDashboardComponent implements OnInit {
 
   fGetTopBlogByDay(date) {
     this.timeSelect = date;
-    this.dashBoardService.GetTopBlogByDay(date).subscribe(
+    this.dashBoardService.GetCountBlogByDay(date).subscribe(
       dt => {
         this.blogInDay = dt[0];
       })
@@ -114,7 +114,7 @@ export class BaseDashboardComponent implements OnInit {
 
   GetCountBlogByDay() {
     return new Promise(async (resolve) => {
-      let d = await this.dashBoardService.GetTopBlogByDay(this.timeSelect).toPromise();
+      let d = await this.dashBoardService.GetCountBlogByDay(this.timeSelect).toPromise();
       resolve(d)
     })
   }

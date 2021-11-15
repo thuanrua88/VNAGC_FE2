@@ -1,16 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
-import {
-  CdkDrag,
-  CdkDragStart,
-  CdkDropList,
-  CdkDropListGroup,
-  CdkDragMove,
-  CdkDragEnter,
-  moveItemInArray
-} from "@angular/cdk/drag-drop";
-import { ViewportRuler } from "@angular/cdk/overlay";
+
 import { BlogService } from 'src/app/core/_service/blog/blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/core/_service/category/category.service';

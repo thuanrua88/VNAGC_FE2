@@ -9,6 +9,7 @@ import { ProductService } from 'src/app/core/_service/product.service';
 export class ListProductComponent implements OnInit {
   listProduct: any = [];
   load = true;
+  listProductRoot;
   constructor(
     private productService: ProductService
   ) { }
@@ -21,7 +22,7 @@ export class ListProductComponent implements OnInit {
     ).then(
       (dt: any) => {
         this.listProduct = dt[0].Data;
-
+        this.listProductRoot = dt[0].Data;
         this.load = false;
       },
       err => {
@@ -49,5 +50,18 @@ export class ListProductComponent implements OnInit {
         }
       )
     }
+  }
+  searchMetarial(val) {
+    if (val.trim() != '') {
+      this.listProduct = this.filterStates(val);
+    }
+    else {
+      this.listProduct = this.listProductRoot;
+    }
+  }
+
+  filterStates(name: string) {
+    return this.listProduct.filter(state =>
+      state.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 }

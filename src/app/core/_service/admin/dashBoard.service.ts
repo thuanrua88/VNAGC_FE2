@@ -59,15 +59,18 @@ export class DashBoardService {
         return this.helperService.getAll("Dashboard/get-Top-Order-by-year");
     }
 
-    GetTopOrderByDay(date) {
-        return this.helperService.get("Dashboard/get-All-Order-by-day", date);
+  GetTopOrderByDay(date) {
+    let param = "?date=" + date;
+        return this.helperService.getParam("Dashboard/get-All-Order-by-day",param);
     }
 
-    GetCountBlogByDay(date) {
-        return this.helperService.get("Dashboard/get-count-Blog-by-day", date);
+  GetCountBlogByDay(date) {
+    let param = "?date=" + date;
+    return this.helperService.getParam("Dashboard/get-count-Blog-by-day", param);
     }
 
-    GetTopBlogByDay(date) {
-        return this.helperService.get("Dashboard/get-count-Blog-by-day", date);
+  GetTopBlogByDay(date) {
+    let param = "?date=" + date;
+    return this.helperService.getParam("Dashboard/get-All-Blog-by-day", param);
     }
 }

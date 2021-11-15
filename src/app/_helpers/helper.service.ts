@@ -50,7 +50,17 @@ export class HelperService {
       })
     )
   }
-
+  getByjson(uri: string, id) {
+    return this.http.get<any>(AppConfig.settings.WhiteServer + uri, id).pipe(
+      catchError(this.handleError),
+      map(data => {
+        if (data == null) {
+          this.router.navigateByUrl('/error-page');
+        }
+        return data;
+      })
+    )
+  }
   post(uri: string, data) {
     return this.http.post<any>(AppConfig.settings.WhiteServer + uri, data).pipe(
       catchError(this.handleError),
